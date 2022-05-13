@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "mkPZe3wvq3d2KJvXa1K6iNNHKwyjl+VUJRTCatyRANP6hTbzZtuyYHPt+1FF8CJhjMSCYWbO/pEgFJ8Tc+VUnA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rene-\\source\\repos\\CaptureViewer\\CaptureViewer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rene-\\.nuget\\packages\\aforge\\2.2.4\\aforge.2.2.4.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\aforge.controls\\2.2.4\\aforge.controls.2.2.4.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\aforge.imaging\\2.2.4\\aforge.imaging.2.2.4.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\aforge.math\\2.2.4\\aforge.math.2.2.4.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\aforge.video\\2.2.4\\aforge.video.2.2.4.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\aforge.video.directshow\\2.2.4\\aforge.video.directshow.2.2.4.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\mahapps.metro\\2.4.9\\mahapps.metro.2.4.9.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\mahapps.metro.iconpacks\\4.11.0\\mahapps.metro.iconpacks.4.11.0.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\mahapps.metro.iconpacks.fontawesome\\4.11.0\\mahapps.metro.iconpacks.fontawesome.4.11.0.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\mahapps.metro.iconpacks.material\\4.11.0\\mahapps.metro.iconpacks.material.4.11.0.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\mahapps.metro.iconpacks.materialdesign\\4.11.0\\mahapps.metro.iconpacks.materialdesign.4.11.0.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\mahapps.metro.iconpacks.modern\\4.11.0\\mahapps.metro.iconpacks.modern.4.11.0.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\mahapps.metro.resources\\0.6.1\\mahapps.metro.resources.0.6.1.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\materialdesignthemes.mahapps\\0.2.2\\materialdesignthemes.mahapps.0.2.2.nupkg.sha512",
+    "C:\\Users\\rene-\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512"
+  ],
+  "logs": []
+}
