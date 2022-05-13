@@ -9,7 +9,7 @@ using System.Windows.Media.Animation;
 using System.Threading;
 using System.Drawing;
 using Video;
-
+using System.Windows.Media.Imaging;
 
 namespace CaptureViewer
 {
@@ -212,6 +212,7 @@ namespace CaptureViewer
             {
                 this.Video_Settings.Visibility = Visibility.Visible;
                 this.Device_Resolutions.ItemsSource = _res;
+                this.Device_Resolutions.SelectedIndex = 0;
             }
         }
 

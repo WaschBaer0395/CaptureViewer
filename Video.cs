@@ -3,6 +3,8 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System;
+using System.Diagnostics;
 
 namespace Video
 {
@@ -22,7 +24,6 @@ namespace Video
 
         public BitmapImage CreateBitmap(Image img)
         {
-
             MemoryStream ms = new MemoryStream();
             img.Save(ms, ImageFormat.Bmp);
             ms.Seek(0, SeekOrigin.Begin);
@@ -30,16 +31,12 @@ namespace Video
             bi.BeginInit();
             bi.StreamSource = ms;
             bi.EndInit();
-
             bi.Freeze();
             return bi;
-            
-
         }
 
         public void RefreshDevice(int selectedIndex)
         {
-
             LoaclWebCamsCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             FilterInfoCollection f = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             _device = new VideoCaptureDevice(LoaclWebCamsCollection[selectedIndex].MonikerString);
