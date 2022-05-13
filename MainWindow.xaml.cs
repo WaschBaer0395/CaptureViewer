@@ -190,7 +190,6 @@ namespace CaptureViewer
                 video.Stop();
             }
 
-
             video.RefreshDevice((int)Device_List.SelectedIndex);
             video.GetDevice().NewFrame += new NewFrameEventHandler(Cam_NewFrame);
             Display_Video_Settings();

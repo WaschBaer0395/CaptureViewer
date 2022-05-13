@@ -100,7 +100,7 @@
 
         <mah:FlyoutsControl>
             <mah:Flyout
-                IsOpen="True"
+                IsOpen="False"
                 AutoCloseInterval="5000"
                 x:Name="Settings_Flyout"
                 HorizontalAlignment="Right"
@@ -108,95 +108,123 @@
                 Width="300px"
                 Header="Settings"
                 Position="Right">
-
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".6*"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="47*"></RowDefinition>
-                        <RowDefinition Height="47*"></RowDefinition>
-                        <RowDefinition Height="184*"></RowDefinition>
-                        <RowDefinition Height="47*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="0.15*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <!--Video Devices-->
-                    <TextBlock 
-                        Grid.Row="0" 
-                        Grid.Column="0" 
-                        VerticalAlignment="Center"
-                        Margin="5,10,5,10">
-                        Capture Devices
-                    </TextBlock>
-                    <mah:SplitButton 
-                        Grid.Row="0" 
-                        Grid.Column="1"
-                        Margin="10,10,10,5"
-                        VerticalAlignment="Center"
-                        x:Name="Device_List" SelectionChanged="Device_List_SelectionChanged">
-                    </mah:SplitButton>
-                    <!--End Video Devices-->
+                    <WrapPanel
+                        Grid.Row="0">
+                        <!--Video Devices-->
+                        <Grid 
+                            x:Name="Device_Settings"
+                            Visibility="Visible"
+                            Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:Flyout}},Path=ActualWidth}"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".6*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock 
+                                Grid.Column="0"
+                                FontSize="14"
+                                VerticalAlignment="Center"
+                                Margin="5,10,5,10">
+                                Capture Devices
+                            </TextBlock>
+
+                            <mah:SplitButton
+                                Grid.Column="1"
+                                Margin="10,10,10,5"
+                                VerticalAlignment="Center"
+                                x:Name="Device_List" SelectionChanged="Device_List_SelectionChanged">
+                            </mah:SplitButton>
+                        </Grid>
+                        <!--End Video Devices-->
 
 
-                    <!--Video Settings-->
+                        <!--Video Settings-->
+                        <Grid 
+                            x:Name="Video_Settings"
+                            Visibility="Collapsed"
+                            Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:Flyout}},Path=ActualWidth}"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".6*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock 
+                                Grid.Column="0" 
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                Margin="5,10,5,10">
+                                Video Settings
+                            </TextBlock>
+
+                            <mah:SplitButton 
+                                Grid.Column="1"
+                                Margin="10,10,10,5"
+                                VerticalAlignment="Center"
+                                x:Name="Device_Resolutions" SelectionChanged="Device_Resolutions_SelectionChanged">
+                            </mah:SplitButton>
+                        </Grid>
+                        <!--End Video Settings-->
+
+
+                        <!--Audio Settings-->
+                        <!--End Audio Settings-->
+                    </WrapPanel>
+                    
+                    <!--Save Settings-->
                     <Grid 
-                        x:Name="Video_Settings"
-                        Visibility="Collapsed"
-                        Grid.Column="0"
-                        Grid.Row="1"
-                        Grid.ColumnSpan="2">
+                        x:Name="Save_Settings"
+                        Visibility="Visible"
+                        Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:Flyout}},Path=ActualWidth}"
+                        Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".6*"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width=".2*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock 
-                            Grid.Row="1" 
-                            Grid.Column="0" 
+                        <TextBlock
+                            Grid.Column="0"
+                            FontSize="14"
+                            HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Margin="5,10,5,10">
-                            Video Settings
+                            Margin="0,0,10,0">
+                            Save
                         </TextBlock>
-                        <mah:SplitButton 
-                            Grid.Row="1" 
-                            Grid.Column="1"
-                            Margin="10,10,10,5"
-                            VerticalAlignment="Center"
-                            x:Name="Device_Resolutions" SelectionChanged="Device_Resolutions_SelectionChanged">
-                        </mah:SplitButton>
-                    </Grid>
-                    <!--End Video Settings-->
-
-
-                    <!--Audio Settings-->
-                    <!--End Audio Settings-->
-
-                    <!--Save Settings-->
-                    <Button 
-                        Style="{StaticResource MyButtonStyle}"
-                        x:Name="Save_Settings_Button"
-                        BorderThickness="0"
-                        Background="Transparent"
-                        Foreground="White"
-                        Grid.Row="3" 
-                        Grid.Column="1"
-                        Margin="0,0,10,10" 
-                        HorizontalAlignment="Right" 
-                        VerticalAlignment="Bottom" 
                         
-                        Click="Save_Settings_Button_Click" 
-                        MouseEnter="Save_Settings_Button_MouseEnter" 
-                        MouseLeave="Save_Settings_Button_MouseLeave">
-                        <iconPacks:PackIconFeatherIcons 
-                            x:Name="Save_Settings_Button_Icon" 
-                            Width="25" 
-                            Height="25"  
-                            Kind="Save" 
-                            Background="Transparent"/>
-                    </Button>
-                    <!--End Save Settings-->
-                </Grid>
+                        <Button 
+                                Style="{StaticResource MyButtonStyle}"
+                                x:Name="Save_Settings_Button"
+                                BorderThickness="0"
+                                Background="Transparent"
+                                Foreground="White"
+                                Grid.Column="1"
+                                Margin="0,0,10,0" 
+                                HorizontalAlignment="Right" 
+                                VerticalAlignment="Center"
+                                Click="Save_Settings_Button_Click" 
+                                MouseEnter="Save_Settings_Button_MouseEnter" 
+                                MouseLeave="Save_Settings_Button_MouseLeave">
 
+                            <iconPacks:PackIconFeatherIcons 
+                                    x:Name="Save_Settings_Button_Icon" 
+                                    Width="25" 
+                                    Height="25"  
+                                    Kind="Save" 
+                                    Background="Transparent"/>
+                        </Button>
+                    </Grid>
+                <!--End Save Settings-->
+                </Grid>
             </mah:Flyout>
         </mah:FlyoutsControl>
     </Grid>
