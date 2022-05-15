@@ -9,9 +9,7 @@ using System.Windows.Media.Animation;
 using System.Threading;
 using System.Drawing;
 using Video;
-using System.Windows.Media.Imaging;
 using NAudio.Wave;
-using System.Runtime.InteropServices;
 using NAudio.CoreAudioApi;
 
 namespace CaptureViewer
@@ -203,14 +201,11 @@ namespace CaptureViewer
             {
                 if (value.Contains(this.Device_List.SelectedItem.ToString())) 
                 {
-                    System.Console.WriteLine(value);
+                    //System.Console.WriteLine(value);
                     this.A_Device_List.SelectedIndex = index;
                 }
                 index++;
             }
-            
-            
-
         }
 
         private void Display_More_Settings()
@@ -236,8 +231,10 @@ namespace CaptureViewer
 
         private void Device_Resolutions_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            video.SelCapabilities = video.VideoCapabilities[Device_Resolutions.SelectedIndex];
-
+            if (Device_Resolutions.SelectedIndex >= 0)
+            {
+                video.SelCapabilities = video.VideoCapabilities[Device_Resolutions.SelectedIndex];
+            }
             try
             {
                 video.Stop();
