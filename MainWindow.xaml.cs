@@ -10,6 +10,9 @@ using System.Threading;
 using System.Drawing;
 using Video;
 using System.Windows.Media.Imaging;
+using NAudio.Wave;
+using System.Runtime.InteropServices;
+using NAudio.CoreAudioApi;
 
 namespace CaptureViewer
 {
@@ -43,7 +46,7 @@ namespace CaptureViewer
 
             // Creating the Device lists for Capturedevices, and AudioIn Devices
             Device_List.ItemsSource = Refresh_V_Device_List();
-            //audio_devices.ItemsSource = refresh_A_Device_List();
+            A_Device_List.ItemsSource = Refresh_A_Device_List();
         }
 
         private void Settings_Button_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -192,11 +195,25 @@ namespace CaptureViewer
 
             video.RefreshDevice((int)Device_List.SelectedIndex);
             video.GetDevice().NewFrame += new NewFrameEventHandler(Cam_NewFrame);
-            Display_Video_Settings();
+            Display_More_Settings();
             this.No_Device.Visibility = Visibility.Hidden;
+
+            int index = 0;
+            foreach (string value in this.A_Device_List.ItemsSource)
+            {
+                if (value.Contains(this.Device_List.SelectedItem.ToString())) 
+                {
+                    System.Console.WriteLine(value);
+                    this.A_Device_List.SelectedIndex = index;
+                }
+                index++;
+            }
+            
+            
+
         }
 
-        private void Display_Video_Settings()
+        private void Display_More_Settings()
         {
             List<String> _res = new List<String>();
             foreach (VideoCapabilities v in video.VideoCapabilities)
@@ -214,6 +231,7 @@ namespace CaptureViewer
                 this.Device_Resolutions.ItemsSource = _res;
                 this.Device_Resolutions.SelectedIndex = 0;
             }
+            this.Audio_Settings.Visibility = Visibility.Visible;
         }
 
         private void Device_Resolutions_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -240,6 +258,7 @@ namespace CaptureViewer
         private void Refresh_Devices(object sender, RoutedEventArgs e)
         {
             Device_List.ItemsSource = Refresh_V_Device_List();
+            A_Device_List.ItemsSource = Refresh_A_Device_List();
         }
 
         private List<string> Refresh_V_Device_List()
@@ -253,6 +272,24 @@ namespace CaptureViewer
                 vlist.Add(filterinfo.Name);
             }
             return vlist;
+        }
+
+        private List<string> Refresh_A_Device_List()
+        {
+            var alist = new List<string> { };
+            //create enumerator
+            var enumerator = new MMDeviceEnumerator();
+            //cycle through all audio devices
+            for (int i = 0; i < WaveIn.DeviceCount; i++) 
+            {
+                Console.WriteLine(enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active)[i]);
+                alist.Add(enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active)[i].FriendlyName);
+            }
+
+            //clean up
+            enumerator.Dispose();
+
+            return alist;
         }
 
         private void Save_Settings_Button_Click(object sender, RoutedEventArgs e)
@@ -275,6 +312,12 @@ namespace CaptureViewer
             Save_Settings_Button_Icon.Background = System.Windows.Media.Brushes.Transparent;
             Save_Settings_Button.Background = System.Windows.Media.Brushes.Transparent;
             Save_Settings_Button.Foreground = System.Windows.Media.Brushes.Transparent;
+        }
+
+        private void A_Device_List_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // A_Device_List.SelectedIndex
+            // selected audio index play stuff here 
         }
     }
 }

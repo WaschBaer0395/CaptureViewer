@@ -100,7 +100,7 @@
 
         <mah:FlyoutsControl>
             <mah:Flyout
-                IsOpen="False"
+                IsOpen="True"
                 AutoCloseInterval="5000"
                 x:Name="Settings_Flyout"
                 HorizontalAlignment="Right"
@@ -171,13 +171,41 @@
                                 Grid.Column="1"
                                 Margin="10,10,10,5"
                                 VerticalAlignment="Center"
-                                x:Name="Device_Resolutions" SelectionChanged="Device_Resolutions_SelectionChanged">
+                                x:Name="Device_Resolutions" 
+                                SelectionChanged="Device_Resolutions_SelectionChanged">
                             </mah:SplitButton>
                         </Grid>
                         <!--End Video Settings-->
 
 
                         <!--Audio Settings-->
+                        <Grid 
+                            x:Name="Audio_Settings"
+                            Visibility="Collapsed"
+                            Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type mah:Flyout}},Path=ActualWidth}"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".6*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock 
+                                Grid.Column="0" 
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                Margin="5,10,5,10">
+                                Audio Devices
+                            </TextBlock>
+
+                            <mah:SplitButton 
+                                Grid.Column="1"
+                                Margin="10,10,10,5"
+                                VerticalAlignment="Center"
+                                x:Name="A_Device_List" SelectionChanged="A_Device_List_SelectionChanged">
+                            </mah:SplitButton>
+                        </Grid>
                         <!--End Audio Settings-->
                     </WrapPanel>
                     
