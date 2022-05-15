@@ -196,15 +196,24 @@ namespace CaptureViewer
             Display_More_Settings();
             this.No_Device.Visibility = Visibility.Hidden;
 
-            int index = 0;
+            int index = -1;
+            bool founddevice = false;
             foreach (string value in this.A_Device_List.ItemsSource)
             {
-                if (value.Contains(this.Device_List.SelectedItem.ToString())) 
+                index++;
+                if (value.Contains(this.Device_List.SelectedItem.ToString()) && !founddevice) 
                 {
                     //System.Console.WriteLine(value);
                     this.A_Device_List.SelectedIndex = index;
+                    founddevice = true;
                 }
-                index++;
+            }
+
+            // Since the last item in the list is always the None Selection
+            // if no matching device is found, default to None for the audio device
+            if (!founddevice)
+            {
+                this.A_Device_List.SelectedIndex = index;
             }
         }
 
@@ -279,9 +288,10 @@ namespace CaptureViewer
             //cycle through all audio devices
             for (int i = 0; i < WaveIn.DeviceCount; i++) 
             {
-                Console.WriteLine(enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active)[i]);
+                //Console.WriteLine(enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active)[i]);
                 alist.Add(enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active)[i].FriendlyName);
             }
+            alist.Add("None");
 
             //clean up
             enumerator.Dispose();
