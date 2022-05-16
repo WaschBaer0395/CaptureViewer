@@ -135,13 +135,36 @@
                                 Margin="5,10,5,10">
                                 Capture Devices
                             </TextBlock>
-
-                            <mah:SplitButton
+                            
+                            <Grid
                                 Grid.Column="1"
-                                Margin="10,10,10,5"
-                                VerticalAlignment="Center"
-                                x:Name="Device_List" SelectionChanged="Device_List_SelectionChanged">
-                            </mah:SplitButton>
+                                Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                
+                                <mah:SplitButton
+                                    Grid.Column="0"
+                                    Margin="10,10,10,5"
+                                    VerticalAlignment="Center"
+                                    x:Name="Device_List" SelectionChanged="Device_List_SelectionChanged">
+                                </mah:SplitButton>
+
+                                <Button
+                                    x:Name="Reload_Devices_Button"
+                                    Grid.Column="1"
+                                    Margin="0,5,5,0"
+                                    BorderThickness="1"
+                                    Background="Transparent"
+                                    Foreground="White"
+                                    VerticalAlignment="Center" Click="Reload_Devices_Button_Click">
+                                    <iconPacks:PackIconFeatherIcons 
+                                        x:Name="Reload_Devices_Icon"
+                                        Kind="RefreshCcw" 
+                                        Background="Transparent"/>
+                                </Button>
+                            </Grid>
                         </Grid>
                         <!--End Video Devices-->
 

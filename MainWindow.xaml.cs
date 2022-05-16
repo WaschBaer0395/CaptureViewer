@@ -261,12 +261,6 @@ namespace CaptureViewer
             }
         }
 
-        private void Refresh_Devices(object sender, RoutedEventArgs e)
-        {
-            Device_List.ItemsSource = Refresh_V_Device_List();
-            A_Device_List.ItemsSource = Refresh_A_Device_List();
-        }
-
         private List<string> Refresh_V_Device_List()
         {
             // Getting a list of all found Capturedevices
@@ -325,6 +319,12 @@ namespace CaptureViewer
         {
             // A_Device_List.SelectedIndex
             // selected audio index play stuff here 
+        }
+
+        private void Reload_Devices_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Device_List.ItemsSource = Refresh_V_Device_List();
+            A_Device_List.ItemsSource = Refresh_A_Device_List();
         }
     }
 }
